@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "fabrics": [
+    {
+      "id": "ankara",
+      "name": "Ankara",
+      "family": "wax_print",
+      "cultures": ["pan_nigerian"],
+      "texture": { "sheen": 0.1, "weave": "plain", "printScale": 1.0, "procedural": true },
+      "pricePerYard": [1500, 6000],
+      "formality": [1, 4],
+      "spotlight": "Bold, wax-printed cotton worn across West Africa. In Nigeria it is everywhere: everyday styles, office Fridays, aso-ebi and party looks. Its history runs through Dutch and West African trade, but Nigerians made it their own.",
+      "review": true
+    },
+    {
+      "id": "aso_oke_sanyan",
+      "name": "Aso-oke (Sanyan)",
+      "family": "aso_oke",
+      "cultures": ["yoruba"],
+      "texture": { "sheen": 0.55, "weave": "strip", "printScale": 0, "procedural": false },
+      "pricePerYard": [15000, 60000],
+      "formality": [4, 5],
+      "spotlight": "Hand-woven on narrow looms by Yoruba weavers, then sewn together from strips. Sanyan, the classic beige, is traditionally woven from wild silk and considered one of the most prestigious types.",
+      "review": true
+    },
+    {
+      "id": "aso_oke_alaari",
+      "name": "Aso-oke (Alaari)",
+      "family": "aso_oke",
+      "cultures": ["yoruba"],
+      "texture": { "sheen": 0.5, "weave": "strip", "printScale": 0, "procedural": false },
+      "pricePerYard": [15000, 55000],
+      "formality": [4, 5],
+      "spotlight": "Alaari is the rich red aso-oke, one of the three classic types alongside sanyan and etu. A statement at any Yoruba celebration.",
+      "review": true
+    },
+    {
+      "id": "aso_oke_etu",
+      "name": "Aso-oke (Etu)",
+      "family": "aso_oke",
+      "cultures": ["yoruba"],
+      "texture": { "sheen": 0.45, "weave": "strip", "printScale": 0, "procedural": false },
+      "pricePerYard": [15000, 55000],
+      "formality": [4, 5],
+      "spotlight": "Etu is the deep indigo aso-oke, often with fine stripes. Dignified, elegant, and loved by elders.",
+      "review": true
+    },
+    {
+      "id": "adire_eleko",
+      "name": "Adire (Eleko)",
+      "family": "adire",
+      "cultures": ["yoruba"],
+      "texture": { "sheen": 0.05, "weave": "plain", "printScale": 1.2, "procedural": true, "proceduralStyle": "adire" },
+      "pricePerYard": [3000, 12000],
+      "formality": [1, 4],
+      "spotlight": "Indigo resist-dyed cloth strongly associated with Abeokuta. In adire eleko, patterns are painted or stencilled with a starch paste before dyeing, leaving pale designs on deep blue.",
+      "review": true
+    },
+    {
+      "id": "adire_oniko",
+      "name": "Adire (Oniko)",
+      "family": "adire",
+      "cultures": ["yoruba"],
+      "texture": { "sheen": 0.05, "weave": "plain", "printScale": 1.0, "procedural": true, "proceduralStyle": "tie_dye" },
+      "pricePerYard": [2500, 10000],
+      "formality": [1, 3],
+      "spotlight": "Tie-resist adire: cloth is tied or bound before dyeing, creating circles and ripples. The basis of the in-game Adire Studio.",
+      "review": true
+    },
+    {
+      "id": "george",
+      "name": "George",
+      "family": "george",
+      "cultures": ["igbo", "ijaw", "efik_ibibio"],
+      "texture": { "sheen": 0.35, "weave": "heavy", "printScale": 1.0, "procedural": true, "proceduralStyle": "madras_embroidered" },
+      "pricePerYard": [10000, 50000],
+      "formality": [4, 5],
+      "spotlight": "Heavy, often richly embroidered wrapper fabric, loved for Igbo and Niger Delta ceremonies. Worn as double wrappers with blouses, coral beads and a matching head tie.",
+      "review": true
+    },
+    {
+      "id": "lace",
+      "name": "Lace",
+      "family": "lace",
+      "cultures": ["pan_nigerian"],
+      "texture": { "sheen": 0.3, "weave": "lace", "printScale": 0.8, "procedural": false, "transparency": true },
+      "pricePerYard": [5000, 80000],
+      "formality": [3, 5],
+      "spotlight": "From cord lace to beaded French lace, lace is an after-party essential. Nigerians are among the world's biggest lace buyers.",
+      "review": true
+    },
+    {
+      "id": "brocade",
+      "name": "Brocade (Shadda)",
+      "family": "brocade",
+      "cultures": ["hausa_fulani", "yoruba", "pan_nigerian"],
+      "texture": { "sheen": 0.6, "weave": "damask", "printScale": 1.0, "procedural": true, "proceduralStyle": "damask" },
+      "pricePerYard": [4000, 30000],
+      "formality": [3, 5],
+      "spotlight": "Stiff, shiny damask-woven cloth. Popular for babban riga and agbada, often heavily embroidered.",
+      "review": true
+    },
+    {
+      "id": "atiku",
+      "name": "Atiku",
+      "family": "atiku",
+      "cultures": ["pan_nigerian"],
+      "texture": { "sheen": 0.15, "weave": "fine", "printScale": 0, "procedural": false },
+      "pricePerYard": [5000, 20000],
+      "formality": [3, 4],
+      "spotlight": "Soft, fine men's fabric for kaftans and senator styles. Clean, sharp, and always appropriate.",
+      "review": true
+    },
+    {
+      "id": "akwete",
+      "name": "Akwete",
+      "family": "akwete",
+      "cultures": ["igbo"],
+      "texture": { "sheen": 0.2, "weave": "handwoven", "printScale": 1.0, "procedural": true, "proceduralStyle": "geometric_woven" },
+      "pricePerYard": [8000, 35000],
+      "formality": [3, 5],
+      "spotlight": "Hand-woven cloth from Akwete in Abia State, traditionally made by Igbo women weavers, known for intricate geometric motifs.",
+      "review": true
+    },
+    {
+      "id": "kano_indigo",
+      "name": "Kano Indigo",
+      "family": "indigo",
+      "cultures": ["hausa_fulani"],
+      "texture": { "sheen": 0.25, "weave": "beaten", "printScale": 0, "procedural": false },
+      "pricePerYard": [6000, 25000],
+      "formality": [3, 5],
+      "spotlight": "Deep indigo cloth from Kano's centuries-old Kofar Mata dye pits. Unlocks in the Kano Gold chapter.",
+      "unlock": "chapter_4",
+      "review": true
+    }
+  ]
+}

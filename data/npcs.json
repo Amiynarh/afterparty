@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "npcs": [
+    {
+      "id": "amaka",
+      "name": "Amaka",
+      "role": "bestie",
+      "personality": "Fashion-obsessed, loyal, loud, dramatic, first to hype you and first to tell you the truth.",
+      "likes": [
+        "gold",
+        "bold colour",
+        "statement gele"
+      ],
+      "dislikes": [
+        "boring outfits",
+        "Dami"
+      ],
+      "barks": {
+        "greeting": [
+          "Babe! Where have you been hiding?",
+          "See this one, looking like money!"
+        ],
+        "high_score": [
+          "Ehn ehn! You carry the whole party on your head!"
+        ],
+        "low_score": [
+          "I love you, but who styled you today?"
+        ],
+        "repeat_colour": [
+          "Gold again? Chai, you and gold ehn."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "tolu",
+      "name": "Tolu",
+      "role": "friend_future_client",
+      "personality": "Aspiring Afrobeats artist, dreamy, broke but stylish. Becomes a celebrity client if you believe in him early.",
+      "barks": {
+        "greeting": [
+          "My stylist! When I blow, you're dressing me for the Grammys."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "zara",
+      "name": "Zara",
+      "role": "judge_influencer",
+      "personality": "Top Lagos influencer. Cares about trends, drama and photo-worthiness. Brutally online.",
+      "judges": [
+        "style",
+        "creativity"
+      ],
+      "barks": {
+        "high_score": [
+          "Posting this. Immediately.",
+          "The camera is in love."
+        ],
+        "low_score": [
+          "It's giving... nothing, sadly."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "chinedu",
+      "name": "Chinedu",
+      "role": "connector",
+      "personality": "Knows everybody, gets you into places, comic relief, always has 'a guy'.",
+      "barks": {
+        "greeting": [
+          "My person! There's an event tonight, I fit enter you."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "aunty_sade",
+      "name": "Aunty Sade",
+      "role": "judge_tradition",
+      "personality": "Neighbourhood gossip and guardian of tradition. Modesty, respect, and correct cultural dress.",
+      "judges": [
+        "cultural",
+        "accessories",
+        "gele"
+      ],
+      "barks": {
+        "high_score": [
+          "Ah! This one was raised well. Who is your mother?"
+        ],
+        "low_score": [
+          "The dress is beautiful. But who told you to combine those shoes?"
+        ],
+        "outshine_bride": [
+          "Are you the one getting married today? Ehn? Answer me!"
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "uncle_bayo",
+      "name": "Uncle Bayo",
+      "role": "judge_decency",
+      "personality": "Family friend present at every party. Values decency and dressing right for the occasion. Dry humour, secretly soft.",
+      "judges": [
+        "event_appropriateness",
+        "modesty"
+      ],
+      "barks": {
+        "high_score": [
+          "Now this is how a responsible person dresses. Well done."
+        ],
+        "low_score": [
+          "Is this what they are wearing now? Hmm."
+        ],
+        "mid_score": [
+          "At least you dressed properly."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "mrs_okafor",
+      "name": "Mrs. Okafor",
+      "role": "big_client",
+      "personality": "Wealthy event organiser. Demanding, generous when impressed, never forgets a disappointment.",
+      "review": true
+    },
+    {
+      "id": "dami",
+      "name": "Dami",
+      "role": "rival",
+      "personality": "Rival stylist. Polished, competitive, always finds a flaw. Grudging respect on very high scores; possible friendship arc.",
+      "judges": [
+        "colour_harmony",
+        "weakest"
+      ],
+      "barks": {
+        "high_score": [
+          "Fine. It's... fine. Don't let it enter your head."
+        ],
+        "low_score": [
+          "Cute. For a beginner."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "iya_bisi",
+      "name": "Iya Bisi",
+      "role": "trader",
+      "personality": "Balogun fabric queen. Firm but fair, loves good manners, hates time-wasters.",
+      "haggle": {
+        "firmness": 0.7,
+        "baseMood": 0.6,
+        "likes": [
+          "greet",
+          "compliment"
+        ],
+        "hates": [
+          "lowball"
+        ]
+      },
+      "barks": {
+        "greeting": [
+          "Fine girl, come and buy! Original fabric, no be copy."
+        ],
+        "counter": [
+          "Customer, I go do am for you, but no let me lose money o."
+        ],
+        "walk_away": [
+          "Ehen, come back! Oya bring your last price."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "baba_tee",
+      "name": "Baba Tee",
+      "role": "tailor",
+      "personality": "Cheapest tailor in Yaba. Wildly creative, totally unpredictable, always 'on his way'.",
+      "tailor": {
+        "skill": 0.7,
+        "reliability": 0.4,
+        "speed": 0.6,
+        "priceMultiplier": 0.6,
+        "creativity": 0.95,
+        "specialties": [
+          "ankara",
+          "buba"
+        ]
+      },
+      "barks": {
+        "late": [
+          "I dey come! I'm on my way, just dey your house."
+        ],
+        "freestyle": [
+          "I added small style for you. You go like am."
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "kunle_cuts",
+      "name": "Kunle Cuts",
+      "role": "tailor",
+      "personality": "Expensive, excellent, fast. Measures twice, judges you once.",
+      "tailor": {
+        "skill": 0.92,
+        "reliability": 0.95,
+        "speed": 0.9,
+        "priceMultiplier": 1.6,
+        "creativity": 0.4,
+        "specialties": [
+          "agbada",
+          "senator",
+          "iro_buba",
+          "corporate"
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "hauwa_stitches",
+      "name": "Hauwa Stitches",
+      "role": "tailor",
+      "personality": "Kano-trained embroidery genius. Affordable and beautiful work, but slow: her waiting list is long.",
+      "tailor": {
+        "skill": 0.88,
+        "reliability": 0.8,
+        "speed": 0.3,
+        "priceMultiplier": 0.8,
+        "creativity": 0.6,
+        "specialties": [
+          "kaftan",
+          "babban_riga",
+          "embroidery"
+        ]
+      },
+      "review": true
+    },
+    {
+      "id": "mummy",
+      "name": "Mummy",
+      "role": "family_phone",
+      "personality": "Your mother. Loving, worried, unimpressed by fashion as a career, secretly proud.",
+      "barks": {
+        "call": [
+          "You're going out dressed like this?",
+          "Fashion will not pay your rent."
+        ],
+        "proud": [
+          "My friend showed me your picture. Hmm. It's nice."
+        ]
+      },
+      "review": true
+    }
+  ],
+  "celebrities": [
+    {
+      "id": "kiki_blaze",
+      "name": "Kiki Blaze",
+      "role": "Afrobeats superstar"
+    },
+    {
+      "id": "maya_banks",
+      "name": "Maya Banks",
+      "role": "Nollywood actress"
+    },
+    {
+      "id": "dj_lush",
+      "name": "DJ Lush",
+      "role": "Celebrity DJ"
+    },
+    {
+      "id": "tunde_gold",
+      "name": "Tunde Gold",
+      "role": "Footballer"
+    }
+  ]
+}
