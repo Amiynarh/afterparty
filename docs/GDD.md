@@ -1,6 +1,6 @@
 # after-party: Lagos Style Stories — Game Design Document
 
-Version 0.1 · Owner: Bronze · Status: pre-production
+Version 0.2 · Owner: Bronze · Status: pre-production (architecture approved 2026-10-08, see `docs/ARCHITECTURE.md`)
 
 ## 1. Vision
 
@@ -8,7 +8,7 @@ after-party is not "a Nigerian skin on a dress-up game." It is a fashion life-si
 
 **Pitch:** *You just moved to Lagos with ₦50,000 and a dream. Can you become the city's next fashion icon?*
 
-**Inspirations:** Covet Fashion (styling challenges), Episode/Choices (story and choices), The Sims (life, home, relationships), Nigerian pop culture (after-party, Nollywood energy, Afrobeats, social media banter).
+**Inspirations:** Covet Fashion (styling challenges), Episode/Choices (story and choices), The Sims (life, home, relationships), Nigerian pop culture (Owambe, Nollywood energy, Afrobeats, social media banter).
 
 **Platforms:** Web first (mobile browser, portrait), then iOS/Android via Capacitor.
 
@@ -19,11 +19,12 @@ after-party is not "a Nigerian skin on a dress-up game." It is a fashion life-si
 1. **Outfits cause consequences.** Overdress for brunch and your friend says you're doing too much; outshine the bride and the aunties will talk; nail the aso-ebi and you meet an influencer.
 2. **Real Nigerian textiles, swappable on any garment.** Any fabric on any style: Ankara, aso-oke, adire, george, lace, akwete, brocade. Plus a procedural pattern engine so the fabric library is effectively infinite, and players design their own.
 3. **Dark skin rendered beautifully.** A first-class skin system with warm, accurate shading across a wide range of Nigerian complexions. Most fashion games get this wrong; we make it a headline.
-4. **Men's fashion treated seriously.** Agbada, babban riga, kaftan, senator, atiku, plus streetwear.
-5. **Systems only Nigerians would invent:** the unreliable tailor, market haggling, the gele minigame, money spray, the aunty panel.
-6. **Humour with heart.** Recurring characters players love (and love to hate), voiced in Pidgin and local languages.
-7. **Built to be shared.** Photo mode and NaijaGram turn every look into a screenshot.
-8. **Real designer drops.** Nigerian designers release collections as in-game items. BRØNZE heels are the launch brand.
+4. **Men's fashion treated seriously.** Agbada, babban riga, kaftan, senator, atiku, plus streetwear. (From Milestone 2: done properly, not rushed into the slice.)
+5. **All of Nigeria, including the North and Muslim fashion.** Hijab, gele over hijab, mayafi, embroidered kaftans, abayas, lalle, Kano indigo and shadda sit alongside aso-oke and George as normal, fairly scored choices, with names from every region.
+6. **Systems only Nigerians would invent:** the unreliable tailor, market haggling, the gele minigame, money spray, the aunty panel.
+7. **Humour with heart.** Recurring characters players love (and love to hate), voiced in Pidgin and local languages.
+8. **Built to be shared.** Photo mode and NaijaGram turn every look into a screenshot.
+9. **Real designer drops.** Nigerian designers release collections as in-game items. BRØNZE heels are the launch brand.
 
 ## 3. Core gameplay loop
 
@@ -52,18 +53,19 @@ The game runs in **days**, each with Morning / Afternoon / Evening slots. Action
 ## 5. Systems
 
 ### 5.1 Character creation
-- Presentation: woman / man (more later).
+- Presentation: woman / man (more later). **M1: woman only.**
 - **Skin:** 12 tones from deepest to light brown with proper undertones (see ART_SPEC 3).
-- **Body shapes:** MVP women: slim, mid, curvy; men: slim, broad. More in later updates.
+- **Body shapes:** target women: slim, mid, curvy; men: slim, broad. **M1 ships one shape (`w_mid`)**; the system supports more.
 - Face presets plus adjustable features; tribal marks as an optional, respectfully handled cosmetic choice (pending cultural review).
-- Name, home state of origin (affects some dialogue and a few unlockables; never locks the player out of any culture's clothing).
+- Name (free text, with suggestions from `data/names.json` spanning Hausa, Fulani, Kanuri, Nupe, Yoruba (including Yoruba-Muslim), Igbo, Edo, Efik and Ijaw names), home state of origin (post-M1; affects some dialogue and a few unlockables; never locks the player out of any culture's clothing).
+- Quick-start characters (M1: 3), one wearing hijab with gele.
 
 ### 5.2 Wardrobe and items
 Every item has tags used by scoring:
 
 | Tag | Values |
 |---|---|
-| `category` | top, bottom, dress, wrapper, outerwear, agbada, kaftan, shoes, bag, headwear, jewellery, hair accessory, eyewear, fan |
+| `category` | top, bottom, dress, wrapper, outerwear, agbada, kaftan, shoes, bag, headwear, veil (hijab, mayafi), jewellery, hair accessory, eyewear, fan |
 | `formality` | 1 casual → 5 ceremonial |
 | `occasions` | wedding_trad, wedding_white, church, brunch, party, club, corporate, interview, festival, casual, date |
 | `cultures` | yoruba, igbo, hausa_fulani, edo, efik_ibibio, ijaw, pan_nigerian, diaspora, global |
@@ -72,7 +74,7 @@ Every item has tags used by scoring:
 | `price`, `rarity`, `designerId?` | |
 | `fabricSlot` | whether a fabric can be applied, and which regions (body, trim, sleeves) |
 
-Categories at launch: traditional (iro & buba, gele, aso-oke sets, george wrappers, agbada, babban riga, kaftans, senator, atiku, Ankara styles), modern Nigerian (Lagos streetwear, corporate chic, brunch, party, clubwear, resortwear, airport looks, Afrobeats style), accessories (gele, coral beads, gold, bags, fans, watches, chains, shoes, sneakers, heels).
+Categories at launch: traditional (iro & buba, gele, hijab and gele-over-hijab, mayafi, women's embroidered kaftan, abaya, aso-oke sets, george wrappers, agbada, babban riga, kaftans, senator, atiku, Ankara styles), modern Nigerian (Lagos streetwear, corporate chic, brunch, party, clubwear, resortwear, airport looks, Afrobeats style), accessories (gele, coral beads, gold, bags, fans, watches, chains, shoes, sneakers, heels).
 
 The wardrobe is a **room**, not a grid: clothes on rails, shoes on shelves (grid view available as a toggle for speed).
 
@@ -89,34 +91,32 @@ The wardrobe is a **room**, not a grid: clothes on rails, shoes on shelves (grid
 
 **Tailors** turn fabric + style into a garment. Each tailor has `skill`, `reliability`, `speed`, `price`, `specialties`. Outcomes on delivery:
 - **Perfect** — as ordered.
-- **Late** — "I dey come!" Arrives after the deadline unless the player pays a rush fee or visits the shop to "follow up".
+- **Late** — "I dey come!" In M1 the outfit arrives at the last minute and you reach the event late (a small penalty and a funny line); it never makes you miss the event. Visiting the shop to "follow up" lowers the risk. (Missing deadlines and rush fees can come back in multi-event chapters.)
 - **Freestyle** — the tailor "improved" the style. Sometimes better, sometimes a disaster.
 - **Masterpiece** — rare; bonus score and a NaijaGram moment.
 Reveal is dramatic: the bag opens, a beat, the garment drops. Players will recognise this pain and laugh.
 
 ### 5.5 Styling minigames
 - **Gele tying (signature):** a gesture/timing sequence of fold, wrap, pleat, tuck, set. Precision shapes the final silhouette (fan, rose, double-layer). A bad gele collapses comically mid-event if the player rushes. Styles unlock with practice.
-- **Makeup:** full layered system (base, contour, highlight, brows, eyes, lashes, lips) tuned for dark skin, with savable presets ("Lagos Soft Glam"). Bridal, soft glam, editorial, natural, party glam.
+- **Makeup:** full layered system (base, contour, highlight, brows, eyes, lashes, lips) tuned for dark skin, with savable presets ("Lagos Soft Glam"). Bridal, soft glam, editorial, natural, party glam. **M1:** skin finish, blush, eyes, lashes, lips, highlight, plus 3 built-in presets. Shades are tone-adaptive (a colour per skin-tone band), so they stay visible and flattering on the deepest skin.
 - **Hair:** knotless braids, Fulani braids, cornrows, locs, afro, Bantu knots, wigs, bobs, pixie, ponytails, puffs, with length, colour, highlights and cuffs/beads.
-- **Lalle/henna** (Northern chapters): tracing minigame on hands and feet.
+- **Lalle/henna:** in M1, 2 static hand designs as a beauty option. The tracing minigame on hands and feet comes with the Northern chapters.
 
 ### 5.6 Challenges and scoring
 A challenge defines: occasion, theme text, budget, deadline, required/forbidden tags, target ranges (formality, modesty, drama), culture context, special rules, and judges. See `data/challenges.json`.
 
-**Player-facing categories** (what the player sees, as judge reactions plus a short breakdown): **Style · Cultural Fit · Colour Harmony · Accessories · Event Appropriateness · Creativity**. Never a bare star rating.
-
-**Under the hood, score (0–100)** = weighted sum of:
+**Categories** (what the player sees *and* what is computed, as judge reactions plus a short breakdown): **Style · Cultural Fit · Colour Harmony · Accessories · Event Appropriateness · Creativity**. Never a bare star rating. Score (0–100) = the challenge's weights × these six sub-scores. The factors below feed them (see ARCHITECTURE D.9):
 - **Occasion fit** — formality and occasion tags vs target.
 - **Theme fit** — tag matches to the theme keywords.
 - **Coordination** — colour harmony across items (fabric palette vs accessories), gele/fabric match.
-- **Cultural appropriateness** — e.g. aso-oke and gele at a Yoruba trad, coral at an Edo/Igbo trad; respectful modesty at Northern events.
-- **Budget** — penalty for overspend; bonus for "rich look, small money".
+- **Cultural appropriateness** — e.g. aso-oke and gele at a Yoruba trad, coral at an Edo/Igbo trad; respectful modesty at Northern events. Ceremony-appropriate Muslim and Northern attire (kaftan, abaya, hijab, gele over hijab, mayafi) gets full credit at a Lagos Owambe. Other Nigerian traditional dress is never penalised.
+- **Budget** — the wallet is the budget; "rich look, small money" boosts the Naira/Influence reward rather than the fashion score.
 - **Special rules** — e.g. `dont_outshine_bride`: drama above a threshold *loses* points; `aso_ebi_match`: must use the group fabric but style it uniquely.
 Weights per challenge live in data. Logic in `systems/scoring.ts`, fully unit-tested.
 
 **The judge panel** turns the score breakdown into personality. Each judge reacts to specific sub-scores with lines from data:
 - **Aunty Sade** (tradition, modesty, "who is your father?")
-- **Zara** (influencer: trendiness, drama, photo-worthiness)
+- **Zara** (influencer: trendiness, drama, photo-worthiness; Kaduna-born, Lagos-based, wears hijab with editorial flair)
 - **Uncle Bayo** (decency and event appropriateness: "At least you dressed properly.")
 - **Dami** (rival: always finds a flaw, grudging respect on high scores)
 
@@ -134,7 +134,7 @@ Arrival walk-in (the reveal), judges' reactions, **money spray** (naira notes ra
 - **Rent** is due every 7 in-game days (Milestone 2+); a gentle sink that pushes the player to take styling jobs.
 
 ### 5.9 NaijaGram (in-game social)
-A phone app with a feed. NPCs post (scripted and systemic), react to the player's looks, and start trends ("this week: emerald and gold"). Players post photo-mode shots; follower count feeds Influence. Gossip threads appear ("Did you see what Amaka wore?") with choices: defend, ignore, comment, investigate. Gossip is always about fictional characters.
+A phone app with a feed. (M1 has only a single results-screen post card: Zara posts your look.) NPCs post (scripted and systemic), react to the player's looks, and start trends ("this week: emerald and gold"). Players post photo-mode shots; follower count feeds Influence. Gossip threads appear ("Did you see what Amaka wore?") with choices: defend, ignore, comment, investigate. Gossip is always about fictional characters.
 
 ### 5.10 Photo mode
 Pose, expression, camera angle, background (location sets), lighting, filter. Export a PNG with a subtle after-party watermark, plus share to device.
@@ -160,14 +160,14 @@ Both run through a backend proxy; scripted fallbacks always exist.
 See `data/npcs.json` for full cards. Core cast:
 - **Amaka** — the bestie. Igbo, fashion-obsessed, loyal, loud.
 - **Tolu** — aspiring Afrobeats artist; future celebrity client.
-- **Zara** — influencer and judge; trends live and die by her.
+- **Zara** — Kaduna-born hijabi influencer and judge; trends live and die by her.
 - **Chinedu** — knows everybody, gets you into places, comic relief.
 - **Aunty Sade** — neighbourhood gossip and tradition judge.
 - **Uncle Bayo** — family friend at every party; judges decency and appropriateness.
 - **Mrs. Okafor** — wealthy event organiser; the big-money client.
 - **Dami** — the rival stylist.
 - **Iya Bisi** — Balogun fabric trader and haggling boss.
-- **Tailors:** Baba Tee (cheap, "on his way"), Kunle Cuts (pricey, perfect, punctual), Hauwa Stitches (Kano-trained embroidery genius, busy).
+- **Tailors:** Baba Tee (cheap, "on his way"), Kunle Cuts (pricey, perfect, punctual), Hauwa Stitches (Kano-trained embroidery genius, busy; her embroidered kaftans are an M1 tailor style).
 - **Mummy** — the player's mother, by phone: *"Fashion will not pay your rent."*
 - **Fictional celebrities:** Kiki Blaze (Afrobeats star), Maya Banks (actress), DJ Lush, Tunde Gold (footballer). Never real people.
 
@@ -192,7 +192,7 @@ Premium (one-time unlock of all chapters) or free-to-play with cosmetic designer
 
 ## 10. MVP scope (two milestones)
 
-**Milestone 1 — The after-party Loop (follow `docs/BRIEF.md`).** One polished 5–10 minute playthrough, replayable with different strategies: short intro (Mummy sceptical, Amaka encouraging) → character select/create → Balogun market (browse, inspect, haggle) → choose one of 3 tailors (simulated time, funny uncertainty) → style outfit, accessories, hair, makeup → gele minigame → the after-party (alive venue) → 4 judges react → money spray → 20–30s dance → photo mode and Save Look → rewards (money, reputation, XP, a new item) toward 3 levels. Content: 15–25 fabrics, a small high-quality wardrobe, 5 locations. Success = BRIEF section 28.
+**Milestone 1 — The Owambe Loop (follow `docs/BRIEF.md`; detail in `docs/ARCHITECTURE.md`).** One polished 5–10 minute playthrough, replayable with different strategies: short intro (Mummy sceptical, Amaka encouraging) → character select/create → Balogun market (browse, inspect, haggle) → choose one of 3 tailors (simulated time, funny uncertainty) → style outfit, accessories, hair, makeup → gele minigame (or hijab/mayafi; gele can sit over hijab) → the Owambe (alive venue) → 4 judges react → money spray → 20–30s dance → photo mode and Save Look → rewards (money, reputation, XP, a new item) toward 3 levels. Content: 22 fabrics, 34 items, 4 tailor styles, one body shape, 5 locations, a results-screen NaijaGram card, Amaka's borrow box. Success = BRIEF section 28.
 
 **Milestone 2 — Chapter 1.** Calendar and rent, more challenges from `data/challenges.json`, NaijaGram, random events, rival arc, Mrs. Okafor finale.
 
